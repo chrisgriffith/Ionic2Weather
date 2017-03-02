@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Edit Locations</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <button ion-button icon-left clear color="dark" item-left (click)="addLocation()"><ion-icon name="add"></ion-icon>Add City</button>
+  <ion-list>
+
+    <ion-list-header>
+      My Locations
+    </ion-list-header>
+
+    <ion-item *ngFor="let loc of locs">
+      <button ion-button icon-left clear color="dark" (click)="deleteLocation(loc)">
+     <ion-icon name="trash"></ion-icon>
+   </button>{{loc.title}}
+    </ion-item>
+
+  </ion-list>
+</ion-content>
