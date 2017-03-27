@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, Events } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { WeatherPage } from '../pages/weather/weather';
 import { LocationsPage } from '../pages/locations/locations';
 import { CurrentLoc } from '../interfaces/current-loc';
@@ -16,7 +17,7 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any, icon: string, loc?: CurrentLoc }>;
 
-  constructor(public platform: Platform, public locationsService: LocationsService, public events: Events) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public locationsService: LocationsService, public events: Events) {
     this.initializeApp();
     this.getMyLocations();
     events.subscribe('locations:updated', (data) => {
@@ -38,8 +39,8 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
     });
   }
 
