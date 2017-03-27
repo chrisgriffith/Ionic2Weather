@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, Refresher } from 'ionic-angular';
 import { WeatherService } from '../../providers/weather-service';
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 import { CurrentLoc } from '../../interfaces/current-loc';
 
 @Component({
@@ -17,7 +17,7 @@ export class WeatherPage {
   currentLoc: CurrentLoc = { lat: 0, lon: 0 };
   pageTitle: string = 'Current Location';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public weatherService: WeatherService, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public weatherService: WeatherService, public loadingCtrl: LoadingController, public geolocation: Geolocation) {
     let loader = this.loadingCtrl.create({
       content: "Loading weather data..."
     });
@@ -26,7 +26,7 @@ export class WeatherPage {
     let loc: CurrentLoc = this.navParams.get('geoloc');
 
     if (loc === undefined) {
-      Geolocation.getCurrentPosition().then(pos => {
+      geolocation.getCurrentPosition().then(pos => {
         //çconsole.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
         this.currentLoc.lat = pos.coords.latitude;
         this.currentLoc.lon = pos.coords.longitude;

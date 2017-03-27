@@ -1,5 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { Geolocation } from '@ionic-native/geolocation';
 import { MyApp } from './app.component';
 import { WeatherPage } from '../pages/weather/weather';
 import { LocationsPage } from '../pages/locations/locations';
@@ -24,6 +27,14 @@ import { Weathericon } from '../pipes/weatherIcon';
     WeatherPage,
     LocationsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, WeatherService, GeocodeService, LocationsService]
+  providers: [
+    StatusBar,
+    SplashScreen,
+    Geolocation, 
+    WeatherService, 
+    GeocodeService, 
+    LocationsService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, WeatherService, GeocodeService, LocationsService]
+
 })
 export class AppModule {}
