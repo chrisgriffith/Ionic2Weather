@@ -7,5 +7,8 @@ This is a starter template for the Ionic2Weather app from [Mobile App Developmen
 
 ```bash
 $ sudo npm install -g ionic cordova
-$ ionic start Ionic2Weather https://github.com/chrisgriffith/Ionic2Weather --v2
+$ ionic start Ionic2Weather https://github.com/chrisgriffith/Ionic2Weather
+$ cd Ionic2Weather
+$ npm install
 ```
+Note: There are additional steps outlined in the book that need to be followed in order for this final version of the app to work.
